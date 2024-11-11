@@ -1,20 +1,21 @@
 "use client";
 
-import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
+  Label,
   PolarGrid,
   PolarRadiusAxis,
   RadialBar,
-  Label,
   RadialBarChart,
 } from "recharts";
+
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { calculatePercentage, convertFileSize } from "@/lib/utils";
 
 const chartConfig = {
@@ -29,6 +30,7 @@ const chartConfig = {
 
 const Chart = ({ used = 0 }: { used: number }) => {
   const chartData = [{ storage: "used", 10: used, fill: "white" }];
+
   return (
     <Card className="chart">
       <CardContent className="flex-1 p-0">
@@ -44,8 +46,8 @@ const Chart = ({ used = 0 }: { used: number }) => {
               gridType="circle"
               radialLines={false}
               stroke="none"
-              polarRadius={[86, 74]}
               className="polar-grid"
+              polarRadius={[86, 74]}
             />
             <RadialBar dataKey="storage" background cornerRadius={10} />
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
@@ -90,10 +92,11 @@ const Chart = ({ used = 0 }: { used: number }) => {
       <CardHeader className="chart-details">
         <CardTitle className="chart-title">Available Storage</CardTitle>
         <CardDescription className="chart-description">
-          {used ? convertFileSize(used) : "2GB"} /2GB
+          {used ? convertFileSize(used) : "2GB"} / 2GB
         </CardDescription>
       </CardHeader>
     </Card>
   );
 };
+
 export default Chart;
