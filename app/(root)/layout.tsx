@@ -4,6 +4,9 @@ import MobileNavigation from "@/components/MobileNavigation";
 import Header from "@/components/Header";
 import { getCurrentUser } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
+import { Toaster } from "@/components/ui/toaster";
+
+export const dynamic = "force-dynamic";
 
 export default async function RootLayout({
   children,
@@ -22,6 +25,7 @@ export default async function RootLayout({
         <Header userId={currentUser.$id} accountId={currentUser.accountId} />
         <div className="main-content">{children}</div>
       </section>
+      <Toaster />
     </main>
   );
 }
