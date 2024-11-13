@@ -16,7 +16,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { ShareInput } from "@/components/ActionsModalContent";
+import { FileDetails, ShareInput } from "@/components/ActionsModalContent";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import {
@@ -105,6 +105,7 @@ export default function ActionDropdown({ file }: { file: Models.Document }) {
               onRemove={handleRemoveUser}
             />
           )}
+          {value === "details" && <FileDetails file={file} />}
           {value === "delete" && (
             <p className="delete-confirmation">
               Are you sure you want to delete {` `}
